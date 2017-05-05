@@ -18,6 +18,8 @@
     const vm = this;
 
     vm.$onInit = function() {
+      vm.isAuthorized = false;
+      
       usersService.attemptToAuthorize()
         .then((res) => {
           if (res.data === 'Unauthorized') {
@@ -31,6 +33,7 @@
         })
         .then((lists) => {
           vm.lists = lists;
+          vm.isAuthorized = true;
         });
     }
 

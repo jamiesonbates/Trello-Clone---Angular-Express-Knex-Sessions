@@ -25,5 +25,15 @@
           return err;
         });
     }
+
+    this.deleteToken = function() {
+      return $http.delete('/api/token')
+        .then((res) => {
+          return res;
+        })
+        .catch((err) => {
+          return err;
+        })
+    }
   }
 })();

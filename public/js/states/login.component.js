@@ -7,8 +7,8 @@
       controller
     });
 
-  controller.$inject = ['usersService'];
-  function controller(usersService) {
+  controller.$inject = ['$state', 'usersService'];
+  function controller($state, usersService) {
     const vm = this;
 
     vm.$onInit = function() {
@@ -19,8 +19,8 @@
     vm.loginUser = function() {
       usersService.postToken(vm.username, vm.password)
         .then((res) => {
-          console.log(res);
-        })
+          $state.go('home');
+        });
     }
   }
 })();

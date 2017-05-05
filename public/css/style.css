@@ -17,7 +17,7 @@ header {
   position: relative;
 }
 
-header form {
+header button {
   position: absolute;
   right: 20px;
 }
