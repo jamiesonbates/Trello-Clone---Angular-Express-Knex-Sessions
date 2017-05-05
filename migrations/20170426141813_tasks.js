@@ -6,7 +6,7 @@ exports.up = function(knex) {
       .references('id')
       .inTable('lists')
       .onDelete('CASCADE');
-    table.string('task');
+    table.string('task').notNullable();
     table.timestamps(true, true);
   });
 };
