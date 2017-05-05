@@ -6,8 +6,8 @@
 
   service.$inject = ['$http'];
   function service($http) {
-    this.getList = function() {
-      return $http.get('/api/lists')
+    this.getList = function(userId) {
+      return $http.get(`/api/lists/${userId}`)
         .then((res) => {
           return res.data;
         });

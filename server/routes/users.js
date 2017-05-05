@@ -8,18 +8,17 @@ const router = express.Router();
 const util = require('./util');
 
 router.get('/users', util.authorize, (req, res, next) => {
-  console.log('in get users');
   knex('users')
     .where('id', req.claim.userId)
     .returning('*')
-    .then((user) => {
-      console.log(user);
+    .then((users) => {
+      const user = users[0];
+      
       delete user.h_pw;
 
       res.send(user);
     })
     .catch((err) => {
-      console.log('here');
       next(err);
     });
 });

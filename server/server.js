@@ -10,6 +10,10 @@ const knex = require('../knex');
 const app = express();
 const port = process.env.PORT || 8000;
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan('dev'));

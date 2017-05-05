@@ -6,8 +6,10 @@ const knex = require('../../knex');
 
 const util = require('./util');
 
-router.get('/lists', (req, res, next) => {
-  util.getLists()
+router.get('/lists/:id', util.authorize, (req, res, next) => {
+  const userId = req.params.id;
+
+  util.getLists(userId)
     .then((lists) => {
       res.send(lists);
     })

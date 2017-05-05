@@ -22,14 +22,16 @@
         .then((res) => {
           if (res.data === 'Unauthorized') {
             $state.go('login');
+            return;
           }
 
-          vm.lists = res.data;
+          const userId = res.data.id;
+
+          return listsService.getList(userId);
         })
-      // listsService.getList()
-      //   .then((lists) => {
-      //     vm.lists = lists;
-      //   });
+        .then((lists) => {
+          vm.lists = lists;
+        });
     }
 
     vm.addList = function(title) {

@@ -7,8 +7,8 @@
       controller
     });
 
-  controller.$inject = [usersService];
-  function controller() {
+  controller.$inject = ['usersService'];
+  function controller(usersService) {
     const vm = this;
 
     vm.$onInit = function() {
@@ -17,9 +17,9 @@
     }
 
     vm.loginUser = function() {
-      usersService.loginUser(vm.username, vm.password)
+      usersService.postToken(vm.username, vm.password)
         .then((res) => {
-          console.log(res.data);
+          console.log(res);
         })
     }
   }

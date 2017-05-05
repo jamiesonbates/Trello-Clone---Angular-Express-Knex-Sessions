@@ -39,8 +39,9 @@ function getTasks(list) {
   return promise;
 };
 
-function getLists() {
+function getLists(userId) {
   return knex('lists')
+    .where('user_id', userId)
     .returning('*')
     .then((lists) => {
       const promises = [];

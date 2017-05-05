@@ -9,18 +9,21 @@
     this.attemptToAuthorize = function() {
       return $http.get('/api/users')
         .then((res) => {
-          return res.data;
+          return res;
         })
         .catch((err) => {
           return err;
         });
     }
 
-    this.loginUser = function(username, password) {
-      $http.post('/api/token', { username, password })
-        .then((user) => {
-          
+    this.postToken = function(username, password) {
+      return $http.post('/api/token', { username, password })
+        .then((res) => {
+          return res;
         })
+        .catch((err) => {
+          return err;
+        });
     }
   }
 })();
