@@ -20,9 +20,10 @@ router.get('/lists/:id', util.authorize, (req, res, next) => {
 
 router.post('/lists', (req, res, next) => {
   const title = req.body.list;
+  const user_id = req.body.userId;
 
   knex('lists')
-    .insert({ title })
+    .insert({ title, user_id })
     .returning('*')
     .then((list) => {
       res.send(list[0]);

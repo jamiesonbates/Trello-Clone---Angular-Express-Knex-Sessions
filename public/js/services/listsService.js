@@ -13,8 +13,8 @@
         });
     }
 
-    this.postList = function(list) {
-      return $http.post('/api/lists', { list })
+    this.postList = function(list, userId) {
+      return $http.post('/api/lists', { list, userId })
         .then((res) => {
           return res.data;
         });

@@ -19,7 +19,8 @@
 
     vm.$onInit = function() {
       vm.isAuthorized = false;
-      
+      vm.userId = '';
+
       usersService.attemptToAuthorize()
         .then((res) => {
           if (res.data === 'Unauthorized') {
@@ -29,7 +30,9 @@
 
           const userId = res.data.id;
 
-          return listsService.getList(userId);
+          vm.userId = userId;
+
+          return listsService.getList(vm.userId);
         })
         .then((lists) => {
           vm.lists = lists;
@@ -38,9 +41,9 @@
     }
 
     vm.addList = function(title) {
-      listsService.postList(title)
+      listsService.postList(title, vm.userId)
         .then(() => {
-          return listsService.getList();
+          return listsService.getList(vm.userId);
         })
         .then((lists) => {
           vm.lists = lists;
@@ -50,7 +53,7 @@
     vm.deleteList = function(listId) {
       listsService.deleteList(listId)
         .then(() => {
-          return listsService.getList();
+          return listsService.getList(vm.userId);
         })
         .then((lists) => {
           vm.lists = lists;
@@ -60,7 +63,7 @@
     vm.deleteTask = function(taskId) {
       tasksService.deleteTask(taskId)
         .then(() => {
-          return listsService.getList();
+          return listsService.getList(vm.userId);
         })
         .then((lists) => {
           vm.lists = lists;
