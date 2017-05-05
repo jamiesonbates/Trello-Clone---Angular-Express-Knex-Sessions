@@ -13,11 +13,10 @@
   controller.$inject = ['$state', 'usersService'];
   function controller($state, usersService) {
     const vm = this;
-    
+
     vm.signOut = function() {
       usersService.deleteToken()
         .then((user) => {
-          console.log(user);
           $state.go('login');
         })
     }

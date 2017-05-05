@@ -7,9 +7,9 @@
     <div class="signup">
       <h2>Signup</h2>
 
-      <form>
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
+      <form ng-submit="$ctrl.signUp()">
+        <input type="text" name="username" ng-model="$ctrl.username" placeholder="Username">
+        <input type="password" name="password" ng-model="$ctrl.password" placeholder="Password">
         <button type="submit" class="btn signup-btn">Signup</button>
       </form>
 

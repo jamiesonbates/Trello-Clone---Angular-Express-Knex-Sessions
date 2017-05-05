@@ -13,7 +13,7 @@ router.get('/users', util.authorize, (req, res, next) => {
     .returning('*')
     .then((users) => {
       const user = users[0];
-      
+
       delete user.h_pw;
 
       res.send(user);

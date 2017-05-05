@@ -33,7 +33,17 @@
         })
         .catch((err) => {
           return err;
+        });
+    }
+
+    this.postUser = function(username, password) {
+      return $http.post('/api/users', { username, password })
+        .then((res) => {
+          return res;
         })
+        .catch((err) => {
+          return err;
+        });
     }
   }
 })();
