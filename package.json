@@ -8,5 +8,21 @@
   },
   "keywords": [],
   "author": "Jamieson Bates <jamiesonbates@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "angular": "1.6.0",
+    "angular-ui-router": "1.0.0-beta.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "knex": "^0.13.0",
+    "path": "^0.12.7",
+    "pg": "^6.1.5"
+  },
+  "scripts": {
+    "knex": "knex"
+  }
 }
