@@ -1,6 +1,23 @@
 'use strict';
 
+const bcrypt = require('bcrypt-as-promised');
+const boom = require('boom');
+const express = require('express');
 const knex = require('../../knex');
+const jwt = require('jsonwebtoken');
+
+function authorize(req, res, next) {
+  console.log('in authorize');
+  jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, payload) => {
+    if (err) {
+      return next(boom.create(401, 'Unauthorized'));
+    }
+
+    req.claim = payload;
+
+    next();
+  });
+}
 
 function getTasks(list) {
   const promise = new Promise((resolve, reject) => {
@@ -40,6 +57,7 @@ function getLists() {
 };
 
 module.exports = {
+  authorize,
   getLists,
   getTasks
 }

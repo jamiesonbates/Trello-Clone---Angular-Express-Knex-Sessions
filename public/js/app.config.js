@@ -13,5 +13,15 @@
         url: '/',
         component: 'home'
       })
+      .state({
+        name: 'login',
+        url: '/',
+        component: 'login'
+      })
+      .state({
+        name: 'signup',
+        url: '/signup',
+        component: 'signup'
+      });
   }
 })();

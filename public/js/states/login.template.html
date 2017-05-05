@@ -1,0 +1,19 @@
+<header>
+  <h1>ToDoly</h1>
+</header>
+
+<main>
+  <div class="login-container">
+    <div class="login">
+      <h2>Login</h2>
+
+      <form ng-submit="$ctrl.loginUser()">
+        <input type="text" name="username" ng-model="$ctrl.username" placeholder="Username">
+        <input type="password" name="password" ng-model="$ctrl.password" placeholder="Password">
+        <button type="submit" class="btn login-btn">Login</button>
+      </form>
+
+      <p>Not signed up? <a ui-sref="signup">Signup<a/></p>
+    </div>
+  </div>
+</main>

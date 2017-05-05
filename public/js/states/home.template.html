@@ -1,0 +1,19 @@
+<header>
+  <h1>ToDoly</h1>
+</header>
+
+<main>
+  <new-list add-list="$ctrl.addList(title)"></new-list>
+
+  <div class="all-lists">
+    <div class="list" ng-repeat="list in $ctrl.lists">
+      <list
+        list=list
+        delete-list="$ctrl.deleteList(listId)"
+        delete-task="$ctrl.deleteTask(taskId)"
+        add-task="$ctrl.addTask(listId, addition)"
+        update-task="$ctrl.updateTask(taskId, update)">
+      </list>
+    </div>
+  </div>
+</main>

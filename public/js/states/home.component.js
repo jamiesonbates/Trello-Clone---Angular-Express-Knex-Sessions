@@ -4,38 +4,32 @@
   angular.module('app')
     .component('home', {
       controller,
-      template: `
-        <header>
-          <h1>ToDoly</h1>
-        </header>
-
-        <main>
-          <new-list add-list="$ctrl.addList(title)"></new-list>
-
-          <div class="all-lists">
-            <div class="list" ng-repeat="list in $ctrl.lists">
-              <list
-                list=list
-                delete-list="$ctrl.deleteList(listId)"
-                delete-task="$ctrl.deleteTask(taskId)"
-                add-task="$ctrl.addTask(listId, addition)"
-                update-task="$ctrl.updateTask(taskId, update)">
-              </list>
-            </div>
-          </div>
-        </main>
-      `
+      templateUrl: '/js/states/home.template.html'
     });
 
-  controller.$inject = ['listsService', 'tasksService'];
-  function controller(listsService, tasksService) {
+  controller.$inject = [
+    '$state',
+    'usersService',
+    'listsService',
+    'tasksService'
+  ];
+
+  function controller($state, usersService, listsService, tasksService) {
     const vm = this;
 
     vm.$onInit = function() {
-      listsService.getList()
-        .then((lists) => {
-          vm.lists = lists;
-        });
+      usersService.attemptToAuthorize()
+        .then((res) => {
+          if (res.data === 'Unauthorized') {
+            $state.go('login');
+          }
+
+          vm.lists = res.data;
+        })
+      // listsService.getList()
+      //   .then((lists) => {
+      //     vm.lists = lists;
+      //   });
     }
 
     vm.addList = function(title) {
