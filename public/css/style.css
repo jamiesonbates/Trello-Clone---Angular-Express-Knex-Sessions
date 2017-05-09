@@ -30,7 +30,7 @@ header h1 {
   color: #E8EDE2;
 }
 
-home {
+home, login, signup {
   display: flex;
   flex-direction: column;
   flex: 1;

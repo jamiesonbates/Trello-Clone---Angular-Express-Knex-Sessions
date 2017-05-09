@@ -15,7 +15,7 @@
       })
       .state({
         name: 'login',
-        url: '/',
+        url: '/login',
         component: 'login'
       })
       .state({
